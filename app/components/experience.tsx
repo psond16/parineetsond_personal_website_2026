@@ -1,95 +1,38 @@
-import Link from "next/link";
-import Image from "next/image"
 
-export default function Projects(){
-    return(
-        <div>
-            <div>
-                <h1>My Projects</h1>
-            </div>
-            {/* -----project-1 ------ */}
-            <div class = "project1">
-                <p>• Designed and coded frontend interface for a local bakery website using HTML, Tailwind CSS, JavaScript, and Astro.
-                    • Translated the bakery owner’s requirements into interactive page layouts and responsive UI components.
-                    • Created wireframes and prototypes in Figma, then implementing them into production-ready code.
-                    • Managed code with Git/GitHub, reviewing pull requests, and ensuring consistent styling and accessibility across the site.
-                </p>
-                <div className = "flex flex-row">
-                    <Image
-                        src="/Sweet-T thumbnail.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                    <Image
-                        src="/Sweet-T1.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                    <Image
-                        src="/Sweet-T2.png"
-                        alt="picture of CUproject1"
-                        width={300}
-                        height={200}
-                    />
-                    <Image
-                        src="/Sweet-T3.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                </div>
-                
-            </div>
 
-            {/* -----project-2 ------ */}
-            <div class = "project2">
-                <p>Designed and developed a website guiding 100+ potential international students annually through visa, travel, and relocation timelines.
-                    Created 5+ transition stages with checklists and organized navigation to simplify complex preparation processes.
-                    Built wireframes and implemented frontend features using HTML, CSS, and JavaScript, applying UX design principles.
-                </p>
-                <div className = "flex flex-row">
-                    <Image
-                        src="/FHTC1.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                    <Image
-                        src="/FHTC2.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                    <Image
-                        src="/FHTC3.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                </div>
-                
-            </div>
+export default function Experience() {
+  return (
+    <div className="py-20">
+      <h1 className="text-3xl font-bold text-center mb-10">My journey</h1>
+      <p>(so far)</p>
 
-            {/* -----project-3 ------ */}
-            <div class = "project3">
-                <p>• Developed backend features using Django, Python, and MySQL, including database models, APIs, authentication, and core game logic.
-                    • Contributed around 5 merged code updates per week through Git/GitHub and coordinated with 2 frontend
-                    developers for smooth integration.
-                    • Assisted with feature planning and designing backend systems for daily tasks and gamified user interactions.
-                </p>
-                <div className = "flex flex-row">
-                    <Image
-                        src="/GCA.png"
-                        alt="picture of project"
-                        width={300}
-                        height={200}
-                    />
-                    
-                </div>
-                
-            </div>
-        </div>
-    );
+      <div>
+        <h2> Frontend Developer</h2>
+        <h4> Sept - Dec 2025</h4>
+        <p>• Designed and coded frontend interface for a local bakery website using HTML, Tailwind CSS, JavaScript, and Astro.
+            • Translated the bakery owner’s requirements into interactive page layouts and responsive UI components.
+            • Created wireframes and prototypes in Figma, then implementing them into production-ready code.
+            • Managed code with Git/GitHub, reviewing pull requests, and ensuring consistent styling and accessibility across the site.
+        </p>
+      </div>
+
+      <div>
+        <h2> Student Usher</h2>
+        <h4> Jan - Present</h4>
+        <p>Assisted with seating, ticket verification, and crowd guidance at Credit Union 1 Arena, supporting smooth operations for large campus events.
+            Helped guests with directions and questions, ensuring a safe, organized, and positive event experience.
+        </p>
+      </div>
+
+      <div>
+        <h2> Dev Mentor</h2>
+        <h4> Feb - Present</h4>
+        <p>Served as a technical mentor supporting students during project development by answering questions related to Git, version control, HTML, CSS, and general web development concepts.
+            Assisted in debugging code during office hours, helping students identify errors, understand root causes, and improve their problem-solving skills.
+            Helped students understand project workflows, including version control, collaboration, and development processes used in real-world software teams.
+        </p>
+      </div>
+
+    </div>
+  );
 }

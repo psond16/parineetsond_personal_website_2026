@@ -5,6 +5,7 @@ import Header from "./components/header";
 import HomeCollage from "./components/homeCollage";
 import Projects from "./components/projects";
 import Experience from "./components/experience";
+import Contact from "./components/contact";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <About />
       <Projects />
       <Experience />
+      <Contact />
       
 
     </div>
