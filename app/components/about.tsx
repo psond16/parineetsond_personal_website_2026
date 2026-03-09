@@ -2,10 +2,10 @@ import Image from "next/image";
 
 export default function About(){
     return(
-        <div className="bg-red-800 pb-90">
+        <div className="pb-90">
             <div>
-                <h1 className = "text-white">about me</h1>
-                <p className = "text-white">Hi! I’m Parineet Sond, a computer science and Honors student at UIC who loves turning ideas into interactive experiences, whether it’s coding a responsive website or building a gamified chat app. Outside of tech, I’m all about music and love to sing along(not too good at it though!), late-night walks, and chasing beautiful evening sunsets, mountains over beaches any day. I’m a big foodie and love relaxing with close friends over board games, calligraphy sessions, or just a good conversation. I’m fluent in English, Punjabi, and Hindi, enjoy dressing up and capturing moments in photos, and I’m learning to balance my carefully planned life with spontaneous adventures. Always curious, creative, and ready to explore something new, whether it’s a project or a new experience. </p>
+                <h1>about me</h1>
+                <p>Hi! I’m Parineet Sond, a computer science and Honors student at UIC who loves turning ideas into interactive experiences, whether it’s coding a responsive website or building a gamified chat app. Outside of tech, I’m all about music and love to sing along(not too good at it though!), late-night walks, and chasing beautiful evening sunsets, mountains over beaches any day. I’m a big foodie and love relaxing with close friends over board games, calligraphy sessions, or just a good conversation. I’m fluent in English, Punjabi, and Hindi, enjoy dressing up and capturing moments in photos, and I’m learning to balance my carefully planned life with spontaneous adventures. Always curious, creative, and ready to explore something new, whether it’s a project or a new experience. </p>
 
             </div>
             <div className="relative">
