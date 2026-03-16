@@ -2,46 +2,58 @@ import Image from "next/image";
 
 export default function About(){
     return(
-        <div className="pb-90">
-            <div>
-                <h1>about me</h1>
-                <p>Hi! I’m Parineet Sond, a computer science and Honors student at UIC who loves turning ideas into interactive experiences, whether it’s coding a responsive website or building a gamified chat app. Outside of tech, I’m all about music and love to sing along(not too good at it though!), late-night walks, and chasing beautiful evening sunsets, mountains over beaches any day. I’m a big foodie and love relaxing with close friends over board games, calligraphy sessions, or just a good conversation. I’m fluent in English, Punjabi, and Hindi, enjoy dressing up and capturing moments in photos, and I’m learning to balance my carefully planned life with spontaneous adventures. Always curious, creative, and ready to explore something new, whether it’s a project or a new experience. </p>
-
+        <div className=" relative h-[800px] w-screen">
+        
+            <div className="text-left mt-10 mb-8 pl-30 pr-20">
+                <h1 className=" absolute text-[120px] font-bold font-mono text-red-800 uppercase tracking-tighter z-60">About<br /> Me</h1>
             </div>
-            <div className="relative">
+
+            <div className="absolute top-[55%] left-[22%] max-w-[350px] z-50 -rotate-11">
+                <p className="font-mono text-sm text-amber-950 p-4 rounded-lg leading-relaxed">Hi! I’m Parineet Sond, a computer science and Honors student at UIC who loves turning ideas into interactive experiences...</p>
+            </div>
+
+     
+            <div className="absolute right-[20%] top-[50%] z-50">
                 <Image
-                    src="/aboutMe1.png"
-                    alt="picture of me"
-                    width={300}
-                    height={200}
-                    className="absolute top-0 left-0 rotate-[-6deg]"
+                    src="/sparkHacks1.png"
+                    alt="picture of me at sparkhacks"
+                    width={300} 
+                    height={480}
+                    className="rounded-xl shadow-2xl"
                 />
+            </div>
             
 
+            <div className="absolute right-[10%] top-[20%] z-20">
                 <Image
-                    src="/aboutMe2.png"
-                    alt="picture of me"
-                    width={300}
-                    height={200}
-                    className="absolute top-12 left-24 rotate-[8deg]"
+                    src="/motorola-group.jpg"
+                    alt="picture of me at motorola"
+                    width={400} 
+                    height={480}
+                    className="rounded-xl shadow-2xl"
                 />
-
-                <Image
-                    src="/aboutMe3.png"
-                    alt="picture of me"
-                    width={150}
-                    height={200}
-                    className="absolute top-24 left-1 rotate-[-3deg]"
-                />
-
-                {/* <Image
-                    src="/aboutMe3.png"
-                    alt="picture of me"
-                    width={300}
-                    height={200}
-                    className="absolute top-24 left-1 rotate-[-3deg]"
-                /> */}
             </div>
+
+            <div className="absolute right-[35%] top-[10%] z-30">
+                <Image
+                    src="/aboutMe3.png"
+                    alt="picture of me in green blazer"
+                    width={300} 
+                    height={480}
+                    className="rounded-xl shadow-2xl"
+                />
+            </div>
+
+            <div className="absolute left-[15%] top-[30%] z-10 -rotate-6">
+                <Image
+                    src="/page.png"
+                    alt="picture of ruled page"
+                    width={550} 
+                    height={480}
+                />
+            </div>
+
+        
         </div>
     );
 }

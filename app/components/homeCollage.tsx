@@ -49,14 +49,14 @@ export default function HomeCollage(){
   
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -translate-y-[70%] z-20">
-            <Image
-              src="/aboutMe1.png"
-              alt="picture of me (main)"
-              width={430} 
-              height={480}
-              className="rounded-[40px] shadow-2xl"
-            />
-          </div>
+          <Image
+            src="/aboutMe1.png"
+            alt="picture of me (main)"
+            width={430} 
+            height={480}
+            className="rounded-[40px] shadow-2xl"
+          />
+        </div>
 
         <div className = "absolute top-[40%] right-0 z-40">
           <Image
@@ -96,7 +96,7 @@ export default function HomeCollage(){
         </div>
 
         <div className="absolute top-[65%] left-[60%] max-w-[250px] z-50">
-          <p className="text-sm text-green-700 font-mono leading-relaxed">
+          <p className="text-sm text-green-700 font-mono leading-relaxed ">
             I build digital experiences that bridge the gap between creative design and clean, functional code. 
             Passionate about mentoring others and learning new stacks.
           </p>
