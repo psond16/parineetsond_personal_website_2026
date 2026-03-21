@@ -8,7 +8,7 @@ export default function Projects(){
                 <h1>My Projects</h1>
             </div>
             {/* -----project-1 ------ */}
-            <div class = "project1">
+            <div className = "project1">
                 <p>• Designed and coded frontend interface for a local bakery website using HTML, Tailwind CSS, JavaScript, and Astro.
                     • Translated the bakery owner’s requirements into interactive page layouts and responsive UI components.
                     • Created wireframes and prototypes in Figma, then implementing them into production-ready code.
