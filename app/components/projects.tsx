@@ -44,7 +44,7 @@ export default function Projects(){
             </div>
 
             {/* -----project-2 ------ */}
-            <div class = "project2">
+            <div className = "project2">
                 <p>Designed and developed a website guiding 100+ potential international students annually through visa, travel, and relocation timelines.
                     Created 5+ transition stages with checklists and organized navigation to simplify complex preparation processes.
                     Built wireframes and implemented frontend features using HTML, CSS, and JavaScript, applying UX design principles.
@@ -73,7 +73,7 @@ export default function Projects(){
             </div>
 
             {/* -----project-3 ------ */}
-            <div class = "project3">
+            <div className = "project3">
                 <p>• Developed backend features using Django, Python, and MySQL, including database models, APIs, authentication, and core game logic.
                     • Contributed around 5 merged code updates per week through Git/GitHub and coordinated with 2 frontend
                     developers for smooth integration.
