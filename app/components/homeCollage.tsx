@@ -61,7 +61,7 @@ export default function HomeCollage(){
         <div className = "absolute top-[40%] right-0 z-40">
           <Image
             src="/motorola.png"
-            alt="picture of me at mototeola"
+            alt="picture of me at motorola"
             width={230}
             height={200}
             className="rounded-[40px] shadow-2xl"
@@ -70,8 +70,8 @@ export default function HomeCollage(){
 
         <div className = "absolute top-[30%] left-[62%] z-25 rotate-6">
           <Image
-            src="/UICers.jpg"
-            alt="picture of pandas"
+            src="/cars.png"
+            alt="picture of cars event chicago"
             width={400}
             height={200}
             className="rounded-[40px] shadow-2xl"
