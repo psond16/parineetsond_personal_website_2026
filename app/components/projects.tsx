@@ -149,7 +149,7 @@ export default function Projects() {
             <div className="flex items-center justify-center">
               <div className="max-w-2xl">
 
-                {/* FULL DESCRIPTION KEPT INTACT */}
+
                 <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
                   Designed and developed a fully responsive bakery website for{" "}
                   <HoverWord>Sweet-T Bakery</HoverWord>, translating real-world business needs into a clean and accessible frontend interface. Built using{" "}
@@ -218,7 +218,7 @@ export default function Projects() {
             <div className="flex items-center justify-center">
               <div className="max-w-2xl">
 
-                {/* FULL DESCRIPTION KEPT */}
+   
                 <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
                   Built a structured platform guiding international students through{" "}
                   <HoverWord>visa process</HoverWord>, travel planning, and relocation journey. Created 5+ transition stages with checklists and navigation to simplify complex workflows, applying strong UX design principles and user-focused structuring.
@@ -282,7 +282,7 @@ export default function Projects() {
             <div className="flex items-center justify-center">
               <div className="max-w-2xl">
 
-                {/* FULL DESCRIPTION KEPT */}
+ 
                 <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
                   Developed backend systems for a gamified chat app using{" "}
                   <HoverWord>Django</HoverWord>, <HoverWord>Python</HoverWord>, and <HoverWord>MySQL</HoverWord>, implementing authentication, streak logic, quests, virtual currency, pet state management, and scalable <HoverWord>REST APIs</HoverWord> for messaging and engagement systems.
