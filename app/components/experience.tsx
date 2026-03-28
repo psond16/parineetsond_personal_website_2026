@@ -2,7 +2,7 @@
 
 export default function Experience() {
   return (
-    <div className="py-20">
+    <div className="py-20" id = "experience">
       <h1 className="text-3xl font-bold text-center mb-10">My journey</h1>
       <p>(so far)</p>
 

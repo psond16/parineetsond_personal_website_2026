@@ -87,7 +87,7 @@ export default function Projects() {
   });
 
   return (
-    <div className="w-full">
+    <div className="w-full" id = "projects">
 
       {/* ================= HEADER ================= */}
       <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200 text-center py-4">
