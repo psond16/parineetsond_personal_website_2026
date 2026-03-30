@@ -7,7 +7,7 @@ import { useScroll, useMotionValueEvent } from "framer-motion";
 export default function Projects() {
 
   // ================= HOVER STATE =================
-  const [hoveredWord, setHoveredWord] = useState(null);
+  const [hoveredWord, setHoveredWord] = useState<string | null>(null);
 
   const hoverImages = {
     "Sweet-T Bakery": "/sweet-t.png",
@@ -97,10 +97,10 @@ export default function Projects() {
       </div>
 
       {/* ================= HOVER IMAGE OVERLAY ================= */}
-      {hoveredWord && hoverImages[hoveredWord] && (
+      {hoveredWord && hoverImages[hoveredWord as keyof typeof hoverImages] && (
         <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[999] pointer-events-none transition-all duration-300">
           <Image
-            src={hoverImages[hoveredWord]}
+            src={hoverImages[hoveredWord as keyof typeof hoverImages]}
             alt={hoveredWord}
             width={250}
             height={240}
