@@ -51,9 +51,9 @@ export default function Projects() {
   });
 
   useMotionValueEvent(scroll1, "change", (v) => {
-    if (v < 0.33) setActiveIndex1(0);
-    else if (v < 0.66) setActiveIndex1(1);
-    else setActiveIndex1(2);
+    if (v < 0.33) setActiveIndex1(0); //image 1
+    else if (v < 0.66) setActiveIndex1(1); //image 2
+    else setActiveIndex1(2); //image 3
   });
 
   // ================= PROJECT 2 =================
