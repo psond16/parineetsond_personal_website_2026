@@ -26,10 +26,10 @@ export default function Projects() {
     "REST APIs": "/api.png",
   };
 
-  const handleEnter = (word) => setHoveredWord(word);
+  const handleEnter = (word : string) => setHoveredWord(word);
   const handleLeave = () => setHoveredWord(null);
 
-  function HoverWord({ children }) {
+  function HoverWord({ children } : {children : string}) {
     return (
       <span
         onMouseEnter={() => handleEnter(children)}
