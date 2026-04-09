@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Indie_Flower } from "next/font/google";
 import "./globals.css";
+
+const indieFlower = Indie_Flower({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-indie",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${indieFlower.variable}`}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

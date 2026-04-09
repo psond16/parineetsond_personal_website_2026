@@ -1,43 +1,60 @@
-import Link from "next/link";
-
-export default function Contact(){
-    return(
-        <div className = "flex flex-column" id = "contact">
-            <h1>Contact Me</h1>
-
-            <div className="flex flex-col gap-4 items-start p-10">
-
-            {/* Email */}
-            <p>
-                <span className="font-semibold">Email:</span>{" "}
-                <a href="mailto:parineetsond16@gmail.com" className="text-blue-500 underline">parineetsond16@gmail.com
-                </a>
-            </p>
-
-            {/* LinkedIn button */}
+export default function Contact() {
+    return (
+      <div className="min-h-screen flex items-center px-10 pl-50" id="contact">
+        
+        {/* LEFT SIDE */}
+        <div className="w-1/2">
+          <h1 className="font-handwriting text-[14vw] leading-none">
+            Cont <br />
+            act <br />
+            me
+          </h1>
+        </div>
+  
+        {/* RIGHT SIDE */}
+        <div className="w-1/2 flex flex-col gap-6 text-lg">
+          
+          {/* Location */}
+          <p>
+            
+            Chicago, Illinois
+          </p>
+  
+          {/* Email */}
+          <p>
+            
             <a
-                href="https://www.linkedin.com/in/parineetsond/"
-                target="_blank"
-                rel="noopener noreferrer"
+              href="mailto:parineetsond16@gmail.com"
+              className="hover:underline"
             >
-                <button className=" rounded-md bg-blue-600">
-                LinkedIn
-                </button>
+              parineetsond16@gmail.com
+            </a>
+          </p>
+  
+          {/* Links */}
+          {/* Links */}
+            <div className="flex gap-6 pt-4">
+
+            <a
+            href="https://www.linkedin.com/in/parineetsond/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-60 text-center px-6 py-3 rounded-full bg-[#77001E] text-white hover:opacity-90 transition"
+            >
+            LinkedIn
             </a>
 
-            {/* GitHub button */}
             <a
-                href="https://github.com/psond16"
-                target="_blank"
-                rel="noopener noreferrer"
+            href="https://github.com/psond16"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-60 text-center px-6 py-3 rounded-full bg-[#77001E] text-white hover:opacity-90 transition"
             >
-                <button className="rounded-md bg-blue-600">
-                GitHub
-                </button>
+            GitHub
             </a>
 
             </div>
-
         </div>
+      </div>
     );
-}
+  }
