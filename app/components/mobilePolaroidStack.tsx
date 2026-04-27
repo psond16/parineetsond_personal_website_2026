@@ -92,7 +92,7 @@ export default function MobilePolaroidStack() {
   }
 
   function handleDragEnd(
-    event: MouseEvent | TouchEvent | PointerEvent,
+    _event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) {
     const swipeDistance = info.offset.x;
@@ -123,7 +123,7 @@ export default function MobilePolaroidStack() {
       </div>
 
       <div className="relative w-[310px] h-[430px]">
-        <AnimatePresence initial={false} custom={swipeDirection}>
+        <AnimatePresence initial={false}>
           {visibleCards.map((card, index) => {
             const isTopCard = index === 0;
             const style = stackStyles[index];
@@ -131,7 +131,6 @@ export default function MobilePolaroidStack() {
             return (
               <motion.div
                 key={card.src}
-                custom={swipeDirection}
                 className="absolute inset-0 bg-white p-3 pb-8 rounded-md shadow-2xl cursor-grab active:cursor-grabbing"
                 style={{
                   zIndex: 30 - index,
@@ -142,11 +141,11 @@ export default function MobilePolaroidStack() {
                   rotate: style.rotate,
                   scale: style.scale,
                 }}
-                exit={(direction: "left" | "right") => ({
-                  x: direction === "left" ? -450 : 450,
-                  rotate: direction === "left" ? -22 : 22,
+                exit={{
+                  x: swipeDirection === "left" ? -450 : 450,
+                  rotate: swipeDirection === "left" ? -22 : 22,
                   opacity: 0,
-                })}
+                }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
