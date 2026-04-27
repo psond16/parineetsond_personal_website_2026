@@ -19,7 +19,6 @@ function Tile({
 export default function HomeCollage() {
   return (
     <>
-      {/* MOBILE VERSION — unchanged */}
       <MobilePolaroidStack />
 
       {/* DESKTOP / TABLET VERSION */}
@@ -72,7 +71,7 @@ export default function HomeCollage() {
               {/* ================= SPARKHACKS ================= */}
               <Tile className="col-start-1 col-span-3 row-start-5 row-span-4 bg-neutral-100">
                 <Image
-                  src="/sparkHacks.png"
+                  src="/UIC-hackathon.png"
                   alt="picture of me at SparkHacks"
                   fill
                   className="object-cover transition duration-500 hover:scale-105"
