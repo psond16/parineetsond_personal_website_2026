@@ -5,53 +5,62 @@ import { useState } from "react";
 import { motion, AnimatePresence, PanInfo } from "framer-motion";
 
 type PolaroidCard = {
-  src: string;
-  alt: string;
-  caption: string;
-};
+    src: string;
+    alt: string;
+    caption: string;
+    objectPosition: string;
+  };
 
-const initialCards: PolaroidCard[] = [
-  {
-    src: "/aboutMe1.png",
-    alt: "picture of me",
-    caption: "main character moment",
-  },
-  {
-    src: "/sparkHacks.png",
-    alt: "picture of me at SparkHacks",
-    caption: "hackathon era",
-  },
-  {
-    src: "/motorola.png",
-    alt: "picture of me at Motorola",
-    caption: "tech girl things",
-  },
-  {
-    src: "/mentor.png",
-    alt: "mentor slide",
-    caption: "dev mentor",
-  },
-  {
-    src: "/CU1.png",
-    alt: "Credit Union 1 Arena",
-    caption: "student usher",
-  },
-  {
-    src: "/cars.png",
-    alt: "cars event in Chicago",
-    caption: "chicago moments",
-  },
-  {
-    src: "/shatterMe.png",
-    alt: "favorite book",
-    caption: "favorite read",
-  },
-  {
-    src: "/sweaterWeather.png",
-    alt: "favorite song",
-    caption: "favorite song",
-  },
-];
+  const initialCards: PolaroidCard[] = [
+    {
+      src: "/aboutMe1.png",
+      alt: "picture of me",
+      caption: "main character moment",
+      objectPosition: "center 25%",
+    },
+    {
+      src: "/sparkHacks.png",
+      alt: "picture of me at SparkHacks",
+      caption: "hackathon era",
+      objectPosition: "center 35%",
+    },
+    {
+      src: "/motorola.png",
+      alt: "picture of me at Motorola",
+      caption: "tech girl things",
+      objectPosition: "center 10%",
+    },
+    {
+      src: "/mentor.png",
+      alt: "mentor slide",
+      caption: "dev mentor",
+      objectPosition: "center left",
+    },
+    {
+      src: "/CU1.png",
+      alt: "Credit Union 1 Arena",
+      caption: "student usher",
+      objectPosition: "center center",
+    },
+    {
+      src: "/cars.png",
+      alt: "cars event in Chicago",
+      caption: "chicago moments",
+      objectPosition: "center right",
+    },
+    {
+      src: "/shatterMe.png",
+      alt: "favorite book",
+      caption: "favorite read",
+      objectPosition: "center center",
+    },
+    {
+      src: "/sweaterWeather.png",
+      alt: "favorite song",
+      caption: "favorite song",
+      objectPosition: "center center",
+    },
+  ];
 
 const stackStyles = [
   {
@@ -157,14 +166,15 @@ export default function MobilePolaroidStack() {
                 onDragEnd={isTopCard ? handleDragEnd : undefined}
               >
                 <div className="relative w-full h-[300px] overflow-hidden rounded-sm bg-neutral-100">
-                  <Image
-                    src={card.src}
-                    alt={card.alt}
-                    fill
-                    className="object-cover"
-                    sizes="310px"
-                    priority={index === 0}
-                  />
+                    <Image
+                        src={card.src}
+                        alt={card.alt}
+                        fill
+                        className="object-cover"
+                        style={{ objectPosition: card.objectPosition }}
+                        sizes="310px"
+                        priority={index === 0}
+                    />
                 </div>
 
                 <p className="pt-5 text-center font-handwriting text-2xl text-neutral-800">
