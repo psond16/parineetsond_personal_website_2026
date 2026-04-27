@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(0);
 
   const navLinks = [
     { name: "About", href: "#about" },
@@ -13,8 +15,44 @@ export default function Header() {
     { name: "Contact", href: "#contact" },
   ];
 
+  useEffect(() => {
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+
+      // Always show navbar at the very top
+      if (currentScrollY < 20) {
+        setShowHeader(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+
+      // Scrolling down = hide navbar
+      if (currentScrollY > lastScrollY.current) {
+        setShowHeader(false);
+        setMenuOpen(false);
+      }
+
+      // Scrolling up = show navbar
+      if (currentScrollY < lastScrollY.current) {
+        setShowHeader(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="relative z-[999] w-full bg-white/80 backdrop-blur-md">
+    <header
+      className={`fixed left-0 top-0 z-[999] w-full bg-white/80 backdrop-blur-md transition-transform duration-300 ${
+        showHeader || menuOpen ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="flex items-center justify-between px-5 py-5 md:pb-8 md:pt-5 md:pl-10 md:pr-20">
         {/* LOGO / NAME */}
         <Link

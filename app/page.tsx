@@ -11,7 +11,7 @@ import Contact from "./components/contact";
 
 export default function Home() {
   return (
-    <main className="w-full overflow-x-hidden">
+    <main className="w-full overflow-x-hidden pt-24 md:pt-28">
       <Header />
       <HomeCollage />
       <About />
