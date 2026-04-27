@@ -11,16 +11,13 @@ import Contact from "./components/contact";
 
 export default function Home() {
   return (
-    <div>
+    <main className="w-full overflow-x-hidden">
       <Header />
       <HomeCollage />
-
       <About />
       <Projects />
       <Experience />
       <Contact />
-      
-
-    </div>
+    </main>
   );
 }

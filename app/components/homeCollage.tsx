@@ -9,7 +9,7 @@ export default function HomeCollage() {
 
       {/* DESKTOP / TABLET VERSION */}
       <div className="hidden md:flex justify-center">
-        <div className="relative w-screen h-[800px] overflow-hidden">
+        <div className="relative w-full h-[800px] overflow-hidden">
           <div className="absolute top-[55%] left-[-4%] group">
             <Image
               src="/CU1.png"
