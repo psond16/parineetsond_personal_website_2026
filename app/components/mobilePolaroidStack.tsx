@@ -19,7 +19,7 @@ type PolaroidCard = {
       objectPosition: "center 25%",
     },
     {
-      src: "/sparkHacks.png",
+      src: "/UIC-hackathon.png",
       alt: "picture of me at SparkHacks",
       caption: "my first hackathon at SparkHacks @ UIC",
       objectPosition: "center 35%",
