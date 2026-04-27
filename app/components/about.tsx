@@ -23,7 +23,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="font-mono text-xs text-green-700 uppercase tracking-[0.35em]"
         >
-          a little about me
+          a little 
         </motion.p>
 
         <motion.h1
