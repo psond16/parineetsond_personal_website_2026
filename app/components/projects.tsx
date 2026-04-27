@@ -1,311 +1,304 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
-import { useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
-export default function Projects() {
+type Project = {
+  title: string;
+  subtitle: string;
+  description: string;
+  tech: string[];
+  images: string[];
+};
 
-  // ================= HOVER STATE =================
-  const [hoveredWord, setHoveredWord] = useState<string | null>(null);
+const projects: Project[] = [
+  {
+    title: "Sweet-T Bakery",
+    subtitle: "Frontend website for a local bakery",
+    description:
+      "Designed and developed a fully responsive bakery website by translating real business needs into a clean, warm, and accessible frontend experience. I worked with layout, branding, responsive design, wireframes, and GitHub-based version control.",
+    tech: ["HTML", "CSS", "JavaScript", "Astro", "Figma", "GitHub"],
+    images: ["/Sweet-T thumbnail.png", "/Sweet-T1.png", "/Sweet-T2.png"],
+  },
+  {
+    title: "International Student Journey",
+    subtitle: "A guide for international students",
+    description:
+      "Built a structured platform to help international students understand the visa process, travel planning, and relocation journey. The project organizes a complicated experience into clear stages, checklists, and user-friendly navigation.",
+    tech: ["HTML", "CSS", "JavaScript", "UX Design", "Figma"],
+    images: ["/newFHTC1.png", "/newFHTC2.png", "/newFHTC3.png"],
+  },
+  {
+    title: "Gamified Chat App",
+    subtitle: "Backend systems for an interactive chat app",
+    description:
+      "Developed backend systems for a gamified chat app with authentication, streak logic, quests, virtual currency, pet state management, and REST APIs for messaging and engagement features.",
+    tech: ["Django", "Python", "MySQL", "REST APIs", "GitHub"],
+    images: ["/GCA.png", "/GCA2.png", "/GCA3.png"],
+  },
+];
 
-  const hoverImages = {
-    "Sweet-T Bakery": "/sweet-t.png",
-    "HTML": "/html.png",
-    "CSS": "/css.png",
-    "JS": "/js.png",
-    "Astro": "/astro.png",
-    "Figma": "/figma.png",
-    "GitHub": "/github.png",
+function ProjectImageCarousel({ project }: { project: Project }) {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
-    "visa process": "/usvisa.png",
-
-    "Django": "/django.png",
-    "Python": "/python.png",
-    "MySQL": "/mysql.png",
-    "REST APIs": "/api.png",
-  };
-
-  const handleEnter = (word : string) => setHoveredWord(word);
-  const handleLeave = () => setHoveredWord(null);
-
-  function HoverWord({ children } : {children : string}) {
-    return (
-      <span
-        onMouseEnter={() => handleEnter(children)}
-        onMouseLeave={handleLeave}
-        className="relative cursor-pointer font-semibold text-neutral-900 underline decoration-dotted underline-offset-4"
-      >
-        {children}
-      </span>
+  function showNextImage() {
+    setActiveImageIndex((prevIndex) =>
+      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
     );
   }
 
-  // ================= PROJECT 1 =================
-  const [activeIndex1, setActiveIndex1] = useState(0);
-  const ref1 = useRef(null);
-
-  const { scrollYProgress: scroll1 } = useScroll({
-    target: ref1,
-    offset: ["start start", "end start"],
-  });
-
-  useMotionValueEvent(scroll1, "change", (v) => {
-    if (v < 0.33) setActiveIndex1(0); //image 1
-    else if (v < 0.66) setActiveIndex1(1); //image 2
-    else setActiveIndex1(2); //image 3
-  });
-
-  // ================= PROJECT 2 =================
-  const [activeIndex2, setActiveIndex2] = useState(0);
-  const ref2 = useRef(null);
-
-  const { scrollYProgress: scroll2 } = useScroll({
-    target: ref2,
-    offset: ["start start", "end start"],
-  });
-
-  useMotionValueEvent(scroll2, "change", (v) => {
-    if (v < 0.33) setActiveIndex2(0);
-    else if (v < 0.66) setActiveIndex2(1);
-    else setActiveIndex2(2);
-  });
-
-  // ================= PROJECT 3 =================
-  const [activeIndex3, setActiveIndex3] = useState(0);
-  const ref3 = useRef(null);
-
-  const { scrollYProgress: scroll3 } = useScroll({
-    target: ref3,
-    offset: ["start start", "end start"],
-  });
-
-  useMotionValueEvent(scroll3, "change", (v) => {
-    if (v < 0.33) setActiveIndex3(0);
-    else if (v < 0.66) setActiveIndex3(1);
-    else setActiveIndex3(2);
-  });
+  function showPreviousImage() {
+    setActiveImageIndex((prevIndex) =>
+      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+    );
+  }
 
   return (
-    <div className="w-full" id = "projects">
-
-      {/* ================= HEADER ================= */}
-      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-200 text-center py-4">
-        <h1 className="text-5xl font-mono tracking-[0.2em] uppercase text-neutral-800">
-          My Projects
-        </h1>
+    <div className="relative">
+      <div className="relative h-[240px] w-full overflow-hidden rounded-2xl bg-neutral-100 shadow-md">
+        <Image
+          src={project.images[activeImageIndex]}
+          alt={`${project.title} preview`}
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
       </div>
 
-      {/* ================= HOVER IMAGE OVERLAY ================= */}
-      {hoveredWord && hoverImages[hoveredWord as keyof typeof hoverImages] && (
-        <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[999] pointer-events-none transition-all duration-300">
-          <Image
-            src={hoverImages[hoveredWord as keyof typeof hoverImages]}
-            alt={hoveredWord}
-            width={250}
-            height={240}
-            className="rounded-xl shadow-2xl opacity-95"
-          />
+      <div className="mt-4 flex items-center justify-between">
+        <button
+          type="button"
+          onClick={showPreviousImage}
+          className="h-10 w-10 rounded-full border border-neutral-300 text-lg shadow-sm active:scale-95 transition"
+          aria-label="Previous project image"
+        >
+          ←
+        </button>
+
+        <div className="flex gap-2">
+          {project.images.map((image, index) => (
+            <button
+              key={image}
+              type="button"
+              onClick={() => setActiveImageIndex(index)}
+              className={`h-2.5 w-2.5 rounded-full transition ${
+                activeImageIndex === index ? "bg-[#77001E]" : "bg-neutral-300"
+              }`}
+              aria-label={`Show image ${index + 1}`}
+            />
+          ))}
         </div>
-      )}
 
-      {/* ================= PROJECT 1 ================= */}
-      <div ref={ref1} className="h-[400vh] relative bg-white">
-
-        <div className="sticky top-0 h-screen flex items-center justify-center">
-
-          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-32 px-10">
-
-            <div className="relative w-full h-[520px] overflow-hidden rounded-2xl">
-
-              <Image
-                src="/Sweet-T thumbnail.png"
-                alt="Sweet-T Bakery"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex1 === 0 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/Sweet-T1.png"
-                alt="Sweet-T Bakery 2"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex1 === 1 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/Sweet-T2.png"
-                alt="Sweet-T Bakery 3"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex1 === 2 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            </div>
-
-            <div className="flex items-center justify-center">
-              <div className="max-w-2xl">
-
-
-                <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
-                  Designed and developed a fully responsive bakery website for{" "}
-                  <HoverWord>Sweet-T Bakery</HoverWord>, translating real-world business needs into a clean and accessible frontend interface. Built using{" "}
-                  <HoverWord>HTML</HoverWord>, <HoverWord>CSS</HoverWord>,{" "}
-                  <HoverWord>JS</HoverWord>, and <HoverWord>Astro</HoverWord>, with a focus on modern UI design, responsive layouts, and branding. Wireframes were created in{" "}
-                  <HoverWord>Figma</HoverWord> and implemented using a full{" "}
-                  <HoverWord>GitHub</HoverWord> workflow.
-                </p>
-
-                <div className="mt-14">
-                  <p className="text-sm text-neutral-500 mb-3">Tech Stack</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">HTML</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">CSS</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">JavaScript</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">Astro</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">Figma</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">GitHub</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
+        <button
+          type="button"
+          onClick={showNextImage}
+          className="h-10 w-10 rounded-full border border-neutral-300 text-lg shadow-sm active:scale-95 transition"
+          aria-label="Next project image"
+        >
+          →
+        </button>
       </div>
-
-      {/* ================= PROJECT 2 ================= */}
-      <div ref={ref2} className="h-[400vh] relative bg-white">
-
-        <div className="sticky top-0 h-screen flex items-center justify-center">
-
-          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-32 px-10">
-
-            <div className="relative w-full h-[520px] overflow-hidden rounded-2xl">
-
-              <Image
-                src="/newFHTC1.png"
-                alt="International Journey 1"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex2 === 0 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/newFHTC2.png"
-                alt="International Journey 2"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex2 === 1 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/newFHTC3.png"
-                alt="International Journey 3"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex2 === 2 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            </div>
-
-            <div className="flex items-center justify-center">
-              <div className="max-w-2xl">
-
-   
-                <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
-                  Built a structured platform guiding international students through{" "}
-                  <HoverWord>visa process</HoverWord>, travel planning, and relocation journey. Created 5+ transition stages with checklists and navigation to simplify complex workflows, applying strong UX design principles and user-focused structuring.
-                </p>
-
-                <div className="mt-14">
-                  <p className="text-sm text-neutral-500 mb-3">Tech Stack</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">HTML</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">CSS</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">JavaScript</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">UX Design</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">Figma</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* ================= PROJECT 3 ================= */}
-      <div ref={ref3} className="h-[400vh] relative bg-white">
-
-        <div className="sticky top-0 h-screen flex items-center justify-center">
-
-          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-32 px-10">
-
-            <div className="relative w-full h-[520px] overflow-hidden rounded-2xl">
-
-              <Image
-                src="/GCA.png"
-                alt="Gamified Chat App 1"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex3 === 0 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/GCA2.png"
-                alt="Gamified Chat App 2"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex3 === 1 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-
-              <Image
-                src="/GCA3.png"
-                alt="Gamified Chat App 3"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  activeIndex3 === 2 ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            </div>
-
-            <div className="flex items-center justify-center">
-              <div className="max-w-2xl">
-
- 
-                <p className="text-xl md:text-2xl leading-relaxed text-neutral-800 font-medium">
-                  Developed backend systems for a gamified chat app using{" "}
-                  <HoverWord>Django</HoverWord>, <HoverWord>Python</HoverWord>, and <HoverWord>MySQL</HoverWord>, implementing authentication, streak logic, quests, virtual currency, pet state management, and scalable <HoverWord>REST APIs</HoverWord> for messaging and engagement systems.
-                </p>
-
-                <div className="mt-14">
-                  <p className="text-sm text-neutral-500 mb-3">Tech Stack</p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">Django</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">Python</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">MySQL</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">REST API</span>
-                    <span className="text-xs px-3 py-1 rounded-full bg-neutral-100">GitHub</span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
     </div>
+  );
+}
+
+function MobileProjects() {
+  return (
+    <div className="md:hidden px-6">
+      <div className="mb-10">
+        <p className="font-mono text-xs uppercase tracking-[0.35em] text-green-700">
+          selected work
+        </p>
+
+        <h1 className="mt-3 text-5xl font-bold font-mono uppercase tracking-tighter text-neutral-800 leading-none">
+          My
+          <br />
+          Projects
+        </h1>
+
+        <p className="mt-5 font-mono text-sm leading-relaxed text-neutral-600">
+          A few things I’ve built while exploring design, code, and real-world
+          problem solving.
+        </p>
+      </div>
+
+      <div className="space-y-10">
+        {projects.map((project, index) => (
+          <motion.article
+            key={project.title}
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.55, delay: index * 0.08 }}
+            className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-xl"
+          >
+            <ProjectImageCarousel project={project} />
+
+            <div className="mt-6">
+              <p className="font-mono text-xs uppercase tracking-[0.25em] text-[#77001E]">
+                Project 0{index + 1}
+              </p>
+
+              <h2 className="mt-2 text-3xl font-bold font-playfair text-neutral-900">
+                {project.title}
+              </h2>
+
+              <p className="mt-1 font-handwriting text-2xl text-neutral-700">
+                {project.subtitle}
+              </p>
+
+              <p className="mt-4 font-mono text-sm leading-relaxed text-neutral-700">
+                {project.description}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tech.map((techItem) => (
+                  <span
+                    key={techItem}
+                    className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-mono text-neutral-700"
+                  >
+                    {techItem}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DesktopProjects() {
+  return (
+    <div className="hidden md:block px-10 lg:px-24">
+      <div className="mx-auto max-w-6xl text-center mb-20">
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5 }}
+          className="font-mono text-sm uppercase tracking-[0.35em] text-green-700"
+        >
+          selected work
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-4 text-6xl lg:text-7xl font-mono font-bold uppercase tracking-[0.15em] text-neutral-800"
+        >
+          My Projects
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mx-auto mt-6 max-w-2xl font-mono text-sm leading-relaxed text-neutral-600"
+        >
+          A collection of projects where I combined design, frontend
+          development, backend logic, and user-focused problem solving.
+        </motion.p>
+      </div>
+
+      <div className="mx-auto max-w-6xl space-y-28">
+        {projects.map((project, index) => {
+          const reverseLayout = index % 2 === 1;
+
+          return (
+            <motion.article
+              key={project.title}
+              initial={{ opacity: 0, y: 45 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.25 }}
+              transition={{ duration: 0.7 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-center"
+            >
+              {/* IMAGE SIDE */}
+              <div className={reverseLayout ? "md:order-2" : ""}>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="relative col-span-2 h-[360px] overflow-hidden rounded-3xl bg-neutral-100 shadow-2xl">
+                    <Image
+                      src={project.images[0]}
+                      alt={`${project.title} main preview`}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      sizes="50vw"
+                    />
+                  </div>
+
+                  <div className="relative h-[150px] overflow-hidden rounded-2xl bg-neutral-100 shadow-lg">
+                    <Image
+                      src={project.images[1]}
+                      alt={`${project.title} second preview`}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      sizes="25vw"
+                    />
+                  </div>
+
+                  <div className="relative h-[150px] overflow-hidden rounded-2xl bg-neutral-100 shadow-lg">
+                    <Image
+                      src={project.images[2]}
+                      alt={`${project.title} third preview`}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      sizes="25vw"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* TEXT SIDE */}
+              <div className={reverseLayout ? "md:order-1" : ""}>
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-[#77001E]">
+                  Project 0{index + 1}
+                </p>
+
+                <h2 className="mt-4 text-5xl lg:text-6xl font-playfair font-bold text-neutral-900 leading-tight">
+                  {project.title}
+                </h2>
+
+                <p className="mt-3 font-handwriting text-4xl text-neutral-700">
+                  {project.subtitle}
+                </p>
+
+                <p className="mt-7 max-w-xl font-mono text-base leading-relaxed text-neutral-700">
+                  {project.description}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {project.tech.map((techItem) => (
+                    <span
+                      key={techItem}
+                      className="rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm font-mono text-neutral-700 shadow-sm"
+                    >
+                      {techItem}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.article>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default function Projects() {
+  return (
+    <section
+      id="projects"
+      className="w-full bg-white pt-28 md:pt-36 pb-24 md:pb-32"
+    >
+      <MobileProjects />
+      <DesktopProjects />
+    </section>
   );
 }
